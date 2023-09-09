@@ -7,19 +7,17 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-  <div id="headerdiv">
+  <div id="logodiv">
     <img id="logo" src="karpool.png" onclick = "goTo('./homepage.ejs')">
-	  <div id="headerbuttondiv">
-      <button class="headerButton">a</button>
-		  <button class="headerButton">b</button>
-	  </div>
   </div>
   <style>
-	  #headerbuttondiv {
-		  display: flex;
-		  justify-content: space-evenly;
+	  #logodiv {
+		  float: right;
+		  margin-top: 15px;
+		  margin-right: 10px;
 	  }
   </style>
+  <script>
   <script>
     var logoJS = document.getElementById('logo');
     logoJS.style.width = "100px";
