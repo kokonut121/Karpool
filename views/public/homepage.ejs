@@ -9,9 +9,19 @@
   <body>
   <div id="headerdiv">
     <img id="logo" src="karpool.png" onclick = "goTo('./homepage.ejs')">
-    <button class="headerButton"></button>
+	  <div id="headerbuttondiv">
+      <button class="headerButton">a</button>
+		  <button class="headerButton">b</button>
+	  </div>
   </div>
+  <style>
+	  #headerbuttondiv {
+		  display: flex;
+		  justify-content: space-evenly;
+	  }
+  </style>
   <script>
+    var logoJS = document.getElementById('logo');
     logoJS.style.width = "100px";
     logoJS.style.height = "auto";
     function goTo(website) {
