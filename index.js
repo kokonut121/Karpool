@@ -1,14 +1,7 @@
 // MODULE IMPORTS
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
 const express = require('express');
-const flash = require('express-flash-messages');
-const session = require('express-session');
 const http = require('http');
 const https = require('https');
-const enforce = require('express-sslify');
 
 // START EXPRESS SERVER
 const app = express();
@@ -21,10 +14,10 @@ require("./routes/public.js")(app, mongo);
 
 // WILDCARD FOR ALL OTHER ROUTES
 app.get('*', (req, res) => {
-  req.flash(
+  /*req.flash(
     'errorFlash',
     "Error 404: File Not Found. That page doesn't exist."
-  );
+  );*/
   res.redirect('/');
 });
 
@@ -35,10 +28,10 @@ app.use((err, req, res, next) => {
     return next(err);
   }
   console.error(err.stack);
-  req.flash(
+  /*req.flash(
     'errorFlash',
     'Error 500: Internal Server Error. Something broke on our end, sorry about that.'
-  );
+  );*/
   res.redirect('/');
 });
 

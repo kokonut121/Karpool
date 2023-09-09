@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-const session = require('express-session');
-const InitiateMongoServer = require('../../database/config/db');
+const InitiateMongoServer = require('../../db/db');
 
 const { userSchema } = require('../../db/models/user');
 const { vehicleSchema } = require('../../db/models/vehicle');
