@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Karpool</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+  <div id="logodiv">
+    <img id="logo" src="karpool.png" onclick = "goTo('./homepage.ejs')">
+  </div>
+  <script>
+  <script>
+    var logoJS = document.getElementById('logo');
+    logoJS.style.width = "100px";
+    logoJS.style.height = "auto";
+    function goTo(website) {
+      location.href = website;
+    }
+  </script>
+  </body>
+</html>
