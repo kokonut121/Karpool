@@ -1,3 +1,4 @@
+const passport = require('passport');
 
 module.exports = (app, mongo) => {
     app.get('/', async (req, res) => {
