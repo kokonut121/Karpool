@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<%- include("../partials/header") -%>
 <html>
   <head>
     <meta charset="utf-8">
@@ -8,16 +7,67 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-  <div id="logodiv">
+	<header id="header">
+	<div id="leftMenu" class = "header">
+		<div id="menuicon">
+			<div id="mi1"></div>
+			<div id="mi2"></div>
+			<div id="mi3"></div>
+		</div>
+	</div>
+	<button id = "genbutton1" class="genbutton hidden">Sign Up</button>
+	<button id = "genbutton2" class="genbutton hidden">Log In</button>
+  <div id="logodiv" class = "header">
     <img id="logo" src="karpool.png" onclick = "goTo('./homepage.ejs')">
   </div>
+	</header>
+  <style>
+
+  </style>
   <script>
-    var logoJS = document.getElementById('logo');
+		document.addEventListener("scroll", function() {
+			console.log("scrol")
+			const gb1 = document.getElementById('genbutton1');
+			const gb2 = document.getElementById('genbutton2');
+  		if (window.scrollY == 0) {
+				hideshow(gb1, "on"); hideshow(gb2, "on");
+  		} else {
+				hideshow(gb1, "off"); hideshow(gb2, "off");
+			}
+		});
+		const menuicon = document.getElementById('menuicon');
+		menuicon.addEventListener('mouseover', function() {
+			change(menuicon, "on");
+		});
+
+		menuicon.addEventListener('mouseleave', function() {
+			change(menuicon, "off");
+		});
+		function hideshow(t, d) {
+			if (t.classList.contains('hidden') && (d == "off")) {
+				t.style.webkitAnimationName = 'show';
+				t.style.webkitAnimationDuration = '1s';
+				t.classList.toggle('hidden');
+			} else if (!t.classList.contains('hidden') && (d == "on")) {
+				t.style.webkitAnimationName='hide';
+				t.style.webkitAnimationDuration = '1s';
+				setTimeout(function(){t.classList.toggle('hidden');}, 1000);
+			}
+		}
+		function change(t, d) {
+			if (t.classList.contains('change') && (d == "off")) {
+				t.classList.toggle('change');
+			} else if (!t.classList.contains('change') && (d == "on")) {
+				t.classList.toggle('change');
+			}
+		}
+    const logoJS = document.getElementById('logo');
     logoJS.style.width = "100px";
     logoJS.style.height = "auto";
     function goTo(website) {
       location.href = website;
     }
   </script>
+	<hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
   </body>
 </html>
