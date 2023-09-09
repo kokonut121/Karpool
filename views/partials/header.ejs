@@ -1,4 +1,7 @@
-	<header id="header">
+<!DOCTYPE html>
+<body>
+
+<header id="header">
 	<div id="leftMenu" class = "header">
 		<div id="menuicon">
 			<div id="mi1"></div>
@@ -14,3 +17,47 @@
     <img id="logo" src="karpool.png" onclick = "goTo('/public/homepage.ejs')">
   </div>
 	</header>
+<style>
+html {
+  height: 100%;
+  width: 100%;
+}
+
+#logodiv {
+	float: right;
+	margin-top: 15px;
+	margin-right: 10px;
+	cursor: pointer;
+}
+#menuicon {
+	display: inline-block;
+	cursor: pointer;
+	margin-top: 15px;
+	margin-left: 15px;
+}
+#mi1, #mi2, #mi3 {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.change #mi1 {
+  transform: translate(0, 9px) rotate(-45deg);
+}
+
+.change #mi2 {opacity: 0;}
+
+.change #mi3 {
+  transform: translate(0, -9px) rotate(45deg);
+}
+.header {
+	display: inline-block;
+}
+#generalButtonsdiv {
+	display: flex;
+	justify-content: space-evenly;
+}
+</style>
+</body>
