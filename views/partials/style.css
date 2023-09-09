@@ -1,0 +1,65 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+@-webkit-keyframes show {
+	from {opacity: 0%;}
+	to {opacity: 100%;}
+}
+@-webkit-keyframes hide {
+	from {opacity: 100%;}
+	to {opacity: 0%;}
+}
+#logodiv {
+	position: fixed;
+	right: 10px;;
+	margin-top: 20px;
+	margin-right: 10px;
+	cursor: pointer;
+}
+#menuicon {
+	position: fixed;
+	left: 10px;
+	display: inline-block;
+	cursor: pointer;
+	margin-top: 15px;
+	margin-left: 15px;
+}
+#mi1, #mi2, #mi3 {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.change #mi1 {
+  transform: translate(0, 9px) rotate(-45deg);
+}
+
+.change #mi2 {opacity: 0;}
+
+.change #mi3 {
+  transform: translate(0, -9px) rotate(45deg);
+}
+#header {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+}
+
+.genbutton {
+	position: fixed;
+	top: 30px;
+	height: 20px;
+}
+#genbutton1 {
+	left: 25%
+}
+#genbutton2 {
+	right: 35%
+}
+
+.hidden {
+	visibility: hidden;
+}
