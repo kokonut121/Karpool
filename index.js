@@ -15,7 +15,9 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const SESSION_SECRET = process.env.SESSION_SECRET || 'devsecret';
 
+const mongo = require('./utils/functions/mongo.js');
 
+require("./routes/public.js")(app, mongo);
 
 // WILDCARD FOR ALL OTHER ROUTES
 app.get('*', (req, res) => {
