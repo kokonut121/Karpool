@@ -18,4 +18,14 @@ module.exports = (app, mongo) => {
             pageName: 'Sign Up'
         });
     });
+
+    app.post('/login',
+        passport.authenticate('local', {
+            failureRedirect: '/signin',
+            successRedirect: '/homepage'
+        }),
+        (req, res, next) => {
+            console.log('hi');
+        }
+    )
 };
