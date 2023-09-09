@@ -7,17 +7,17 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-  <div id="butttons">
-    <img id="logo" src="/karpool.png">
+  <div id="headerdiv">
+    <img id="logo" src="karpool.png" onclick = "goTo('./homepage.ejs')">
+    <button class="headerButton"></button>
   </div>
-<img id="abuttonlol" src="baguetteflag.jpg" onclick="goTo('home.html')">&nbsp;&nbsp;<button class="abutton"  onclick="goTo('home.html')">Home</button>&nbsp &nbsp &nbsp <button class="abutton" onclick="goTo('aboutus.html')">About us</button>&nbsp &nbsp &nbsp <button class="abutton" onclick="goTo('theanthem.html')">The Anthem</button>&nbsp &nbsp &nbsp <button class="abutton" >Games</button>&nbsp;&nbsp;<hr>
   <script>
-    var abuttonloljs = document.getElementById('abuttonlol')
-    abuttonloljs.style.borderRadius = "50%"
-    abuttonloljs.style.width = "35px"
-    abuttonloljs.style.height = "auto"
+    var logoJS = document.getElementById('logo');
+    logoJS.style.borderRadius = "50%";
+    logoJS.style.width = "35px";
+    logoJS.style.height = "auto";
     function goTo(website) {
-      location.href = website
+      location.href = website;
     }
   </script>
   </body>
