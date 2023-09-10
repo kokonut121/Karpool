@@ -1,31 +1,50 @@
 <!DOCTYPE html>
-<%- include("../partials/header") -%>
 <html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    //<title>Karpool</title>
+    <title>Karpool</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
+
 	<header id="header">
 	<div id="leftMenu" class = "header">
-		<div id="menuicon">
+		<input type="checkbox" id="check">
+		<label for="check">
+		<div id="menuicon" onclick="this.classList.toggle('change')">
 			<div id="mi1"></div>
 			<div id="mi2"></div>
 			<div id="mi3"></div>
+		</div>
+		</label>
+		<div class="sidebar">
+			<header>Menu</header>
+			<a href="./views/public/homepage.ejs" class="active">
+				<div></div> <!--buffers-->
+				<span>Home</span>
+			</a>
+			<a href="./views/private/homepage.ejs">
+				<div></div>
+				<span>Dashboard</span>
+			</a>
+			<a href="./views/public/joinpool.ejs">
+				<div></div>
+				<span>Join a Karpool</span>
+			</a>
 		</div>
 	</div>
 	<button id = "genbutton1" class="genbutton hidden">Sign Up</button>
 	<button id = "genbutton2" class="genbutton hidden">Log In</button>
   <div id="logodiv" class = "header">
-    <img id="logo" src="karpool.png" onclick = "goTo('./homepage.ejs')">
+    <img id="logo" src="karpool.png" onclick = "goTo('./index.html')">
   </div>
 	</header>
   <style>
 
   </style>
   <script>
+
 		document.addEventListener("scroll", function() {
 			console.log("scrol")
 			const gb1 = document.getElementById('genbutton1');
@@ -36,30 +55,15 @@
 				hideshow(gb1, "off"); hideshow(gb2, "off");
 			}
 		});
-		const menuicon = document.getElementById('menuicon');
-		menuicon.addEventListener('mouseover', function() {
-			change(menuicon, "on");
-		});
-
-		menuicon.addEventListener('mouseleave', function() {
-			change(menuicon, "off");
-		});
 		function hideshow(t, d) {
 			if (t.classList.contains('hidden') && (d == "off")) {
 				t.style.webkitAnimationName = 'show';
-				t.style.webkitAnimationDuration = '1s';
+				t.style.webkitAnimationDuration = '0.5s';
 				t.classList.toggle('hidden');
 			} else if (!t.classList.contains('hidden') && (d == "on")) {
 				t.style.webkitAnimationName='hide';
-				t.style.webkitAnimationDuration = '1s';
-				setTimeout(function(){t.classList.toggle('hidden');}, 1000);
-			}
-		}
-		function change(t, d) {
-			if (t.classList.contains('change') && (d == "off")) {
-				t.classList.toggle('change');
-			} else if (!t.classList.contains('change') && (d == "on")) {
-				t.classList.toggle('change');
+				t.style.webkitAnimationDuration = '0.5s';
+				setTimeout(function(){t.classList.toggle('hidden');}, 500);
 			}
 		}
     const logoJS = document.getElementById('logo');
@@ -69,6 +73,6 @@
       location.href = website;
     }
   </script>
-	<hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+
   </body>
 </html>
