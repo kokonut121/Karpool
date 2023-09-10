@@ -8,7 +8,7 @@
             <h3>Where are you starting from?</h3>
             <% locations.forEach((location) => { %>
                 <div>
-                    <input type="radio" name="start" id="<%= location %>" value="<%= location %>">
+                    <input type="radio" name="start" id="<%= location %>" value="<%= location %>" class="otherinput">
                     <label class="form-check-label" for="<%= location %>"><%= location %></label>
                 </div>
             <% }); %>
