@@ -6,6 +6,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const flash = require('express-flash-messages');
 
 // START EXPRESS SERVER
 const app = express();
@@ -22,7 +23,12 @@ app.use(
   })
 );
 
+require('./utils/functions/passport.js')(app, mongo);
+
+app.use(flash());
+
 require("./routes/public.js")(app, mongo);
+require("./routes/private.js")(app, mongo);
 
 // WILDCARD FOR ALL OTHER ROUTES
 app.get('*', (req, res) => {

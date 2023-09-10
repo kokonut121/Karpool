@@ -1,20 +1,23 @@
 const passport = require('passport');
 const locations = ['Seattle', 'Tacoma', 'Bellevue', 'Kent', 'Everett'];
 const bodyParser = require('body-parser');
+const LocalStrategy = require('passport-local').Strategy;
+const mongo = require('../utils/functions/mongo.js');
+    
 
 module.exports = (app, mongo) => {
     app.get('/', async (req, res) => {
-        /*if (req.isAuthenticated()) {
+        if (req.isAuthenticated()) {
             res.redirect('/homepage');
         } else {
             res.render('../views/public/homepage.ejs', {
                 pageName: 'Karpool'
             });
-        }*/
+        }
 
-        res.render('../views/public/homepage.ejs', {
+        /*res.render('../views/public/homepage.ejs', {
             pageName: 'Karpool'
-        });
+        });*/
     });
 
     app.get('/signin', (req, res) => {
@@ -30,7 +33,8 @@ module.exports = (app, mongo) => {
         });
     });
 
-    app.post('/login',
+    app.post(
+        '/login',
         passport.authenticate('local', {
             failureRedirect: '/signin',
             successRedirect: '/homepage'

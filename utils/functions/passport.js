@@ -4,34 +4,35 @@ const mongo = require('./mongo.js');
 const bodyParser = require('body-parser');
 
 module.exports = (app, mongo) => {
-    passport.use(
+    passport.use('local',
         new LocalStrategy(
-            (req, username, password, cb) => {
+            {
+                passReqToCallback: true,
+                usernameField: 'username',
+                passwordField: 'password',
+            },
+            (req, username, password, done) => {
                 username = username.toLowerCase();
                 mongo.User.find({$and: [{ username: username }, { password: password }]})
                     .then((user) => {
                         if (!user[0]) {
-                            return cb(null, false);
+                            return done(null, false);
                         } else {
-                            return cb(null, user[0]);
+                            return done(null, user[0]);
                         }
                     })
                     .catch((err) => {
-                        cb(err);
+                        done(err);
                     })
             }
         )
     );
-    passport.serializeUser(function (user, cb) {
-        cb(null, user);
+    passport.serializeUser(function (user, done) {
+        done(null, user.id);
     });
-    passport.deserializeUser(function (id, cb) {
-        mongo.User.findById(id, function (err, user) {
-            if (err) {
-                return cb(err);
-            }
-            cb(null, user);
-        });
+    passport.deserializeUser(async function (id, done) {
+        const user = await mongo.User.findById(id);
+        done(null, user);
     });
 
     app.use(bodyParser.urlencoded({ extended: true }));
