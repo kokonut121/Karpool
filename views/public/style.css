@@ -2,7 +2,9 @@ html {
   height: 100%;
   width: 100%;
 }
-
+body {
+	background-color: #3f87a6;
+}
 #check {
 	visibility: hidden;
 }
@@ -47,6 +49,7 @@ html {
 	line-height: 65px;
 	padding-left: 30px;
 	box-sizing: border-box;
+	text-decoration: none;
 	border-left: 5px solid transparent;
 	transition: all .5s ease;
 }
@@ -109,7 +112,7 @@ sidebar a.active, sidebar a:hover {
 .genbutton {
 	position: fixed;
 	top: 30px;
-	height: 20px;
+	height: 40px;
 }
 #genbutton1 {
 	left: 25%
@@ -122,3 +125,32 @@ sidebar a.active, sidebar a:hover {
 	visibility: hidden;
 }
 
+#maintitle {
+	font-size: 150px;
+	color: mediumturquoise;
+	text-align: center;
+	padding: 20vh 0;
+}
+#maintitlediv {
+	background: radial-gradient(#f69d3c, #3f87a6);
+	height: 100vh;
+	width: 100vw;
+}
+
+.genbutton {
+	cursor: pointer;
+	background-color: white;
+	border: none;
+	color: gray;
+	padding: 10px 15px;
+	font-size: 20px;
+	margin: 0px 2px;
+	margin-left: 20px;
+	display: inline-block;
+	border-radius: 10px;
+	transition: background-color 0.5s, color 0.5s;
+}
+.genbutton:hover {
+	background-color: rgba(130, 171, 237, 1);
+	color: white;
+}
