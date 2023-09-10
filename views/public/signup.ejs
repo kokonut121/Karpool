@@ -1,43 +1,126 @@
 <%- include("../partials/header") -%>
 
-<h1>Sign up for Karpool!</h1>
+<h1 style="text-align: center; margin-bottom: 50px;"">Sign up for Karpool!</h1>
 
-<div>
-    <form action="/register" method="post">
-        <div>
-            <input type="text" name="username" id="username" placeholder="Username">
-        </div>
-        <div>
-            <input type="text" name="email" id="email" placeholder="Email Address">
-        </div>
-        <div>
-            <input type="password" name="password" id="password" placeholder="Password">
-        </div>
-        <div>
-            <input type="password" name="passwordConfirmation" id="passwordConfirmation" placeholder="Confirm Password">
-        </div>
-        <div>
-            <input type="number" name="yob" id="yob" placeholder="Year of Birth">
-        </div>
-        <div>
-            <input type="text" name="name" id="name" placeholder="Name">
-        </div>
-        <div>
-            <h3>Where are you located?</h3>
-            <% locations.forEach((location) => { %>
-                <div>
-                    <input type="radio" name="location" id="<%= location %>" value="<%= location %>">
-                    <label class="form-check-label" for="<%= location %>"><%= location %></label>
-                </div>
-            <% }); %>
-        </div>
-        <div>
-            <input type="text" name="bio" id="bio" placeholder="Write some fun facts about yourself!">
-        </div>
-
-        <div class="mt-4 ms-1">
-            <a class="btn btn-secondary" id="cancel" href="/">Cancel</a>
-            <input class="btn btn-primary" type="submit" id="submitButton" value="Sign Up">
-        </div>
+<div id="container">
+	<form action="/register" method="post">
+		<div>
+			<input type="text" name="username" id="username" placeholder="Username" class="activenow" required>
+		</div>
+		<div>
+			<input type="email" name="email" id="email" placeholder="Email Address" required>
+		</div>
+		<div>
+			<input type="password" name="password" id="password" placeholder="Password" required>
+		</div>
+		<div>
+			<input type="password" name="passwordConfirmation" id="passwordConfirmation" placeholder="Confirm Password" required>
+		</div>
+		<div>
+			<input type="number" name="yob" id="yob" placeholder="Year of Birth" required>
+		</div>
+		<div>
+			<input type="text" name="name" id="name" placeholder="Name" required>
+		</div>
+		<div aria-required = "true">
+			<h3>Where are you located?</h3>
+			<% locations.forEach((location) => { %>
+				<div>
+					<input type="radio" name="location" id="<%= location %>" value="<%= location %>" class="otherinput">
+					<label class="form-check-label" for="<%= location %>"><%= location %></label>
+				</div>
+			<% }); %>
+		</div>
+		<div>
+			<input type="text" name="bio" id="bio" placeholder="Write some fun facts about yourself!">
+		</div>
+		<div class="mt-4 ms-1">
+			<a class="btn btn-secondary" id="cancel" href="/">Cancel</a>
+			<input class="btn btn-primary otherinput" type="submit" id="signinbtn" value="Sign Up">
+		</div>
     </form>
 </div>
+<script>
+	var x = 45;
+	setInterval(function() {x++; document.body.style.backgroundImage='-moz-linear-gradient(' + x +", " + "blue, white)"}, 100);
+</script>
+<style>
+body {
+	height: 100%;
+	background-image: linear-gradient(45deg, blue, white);
+}
+.form {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+#container {
+	box-sizing: border-box;
+	border: 2px solid rgba(240, 240, 240, 0.5);
+	border-radius: 15px;
+	background-color: rgba(240, 240, 240, 0.7);
+	box-shadow: 0 0 20px 40px rgba(240, 240, 240, 0.7);
+	margin: auto;
+	height: 60vh;
+	width: 40%;
+	text-align: center;
+	position: relative;
+	overflow-y: scroll;
+}
+form div input:not(.otherinput) {
+	padding: 15px;
+	margin: 30px auto;
+	width: 50%;
+	border-radius: 10px;
+	box-shadow: 0 0 20px 8px rgba(14, 29, 54, 0.7);
+	border: 3px;
+	transition: transform 0.5s, background-color 0.5s;
+	flex: 1;
+}
+form div input:not(.otherinput):hover{
+	transform: scale(1.2);
+}
+form div input:not(.otherinput):focus {
+	background-color: mediumseagreen;
+}
+.btndiv {
+	margin-bottom: 30px;
+}
+#cancel {
+	background-color: white;
+	border: none;
+	color: gray;
+	padding: 10px 15px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 20px;
+	margin: 0px 2px;
+	margin-right: 20px;
+	cursor: pointer;
+	display: inline-block;
+	border-radius: 10px;
+	opacity: 50%;
+	transition: opacity 0.5s;
+}
+#cancel:hover {
+	opacity: 100%;
+}
+#signinbtn {
+	cursor: pointer;
+	background-color: white;
+	border: none;
+	color: gray;
+	padding: 10px 15px;
+	font-size: 20px;
+	margin: 0px 2px;
+	margin-left: 20px;
+	display: inline-block;
+	border-radius: 10px;
+	transition: background-color 0.5s, color 0.5s;
+}
+#signinbtn:hover {
+	background-color: rgba(130, 171, 237, 1);
+	color: white;
+}
+
+</style>
