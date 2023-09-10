@@ -8,7 +8,7 @@ const mongo = require('../utils/functions/mongo.js');
 module.exports = (app, mongo) => {
     app.get('/', async (req, res) => {
         if (req.isAuthenticated()) {
-            res.redirect('/homepage');
+            res.redirect('/private/homepage');
         } else {
             res.render('../views/public/homepage.ejs', {
                 pageName: 'Karpool'
@@ -37,7 +37,7 @@ module.exports = (app, mongo) => {
         '/login',
         passport.authenticate('local', {
             failureRedirect: '/signin',
-            successRedirect: '/homepage'
+            successRedirect: '/private/homepage'
         }),
         (req, res, next) => {
             console.log('hi');

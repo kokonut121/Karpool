@@ -1,0 +1,28 @@
+<%- include("../partials/header") -%>
+
+<h1>Register Your Vehicle!</h1>
+
+<div>
+    <form action="/private/vehicleRegistration" method="post">
+        <div>
+            <input type="text" name="make" id="make" placeholder="Make">
+        </div>
+        <div>
+            <input type="text" name="model" id="model" placeholder="Model">
+        </div>
+        <div>
+            <input type="text" name="color" id="color" placeholder="Color">
+        </div>
+        <div>
+            <input type="text" name="lpNum" id="lpNum" placeholder="License Plate Number">
+        </div>
+        <div>
+            <input type="number" name="numSeats" id="numSeats" placeholder="Number of Seats">
+        </div>
+
+        <div class="mt-4 ms-1">
+            <a class="btn btn-secondary" id="cancel" href="/">Cancel</a>
+            <input class="btn btn-primary" type="submit" id="submitButton" value="Sign Up">
+        </div>
+    </form>
+</div>
