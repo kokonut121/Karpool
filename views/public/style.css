@@ -2,6 +2,78 @@ html {
   height: 100%;
   width: 100%;
 }
+
+#check {
+	visibility: hidden;
+}
+#menuicon {
+	position: fixed;
+	left: 10px;
+	display: inline-block;
+	cursor: pointer;
+	margin-top: 15px;
+	margin-left: 15px;
+	transition: 0.5s;
+}
+#mi1, #mi2, #mi3 {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+.sidebar {
+	position: fixed;
+	width: 240px;
+	left: -240px;
+	height: 100%;
+	background-color: #fff;
+	transition: all .5s ease;
+}
+.sidebar header{
+	font-size: 28px;
+	color: darkslategray;
+	line-height: 70px;
+	text-align: center;
+	background-color: #fff;
+	user-select: none;
+}
+
+.sidebar a{
+	display: block;
+	height: 65px;
+	width: 100%;
+	color: darkslategray;
+	line-height: 65px;
+	padding-left: 30px;
+	box-sizing: border-box;
+	border-left: 5px solid transparent;
+	transition: all .5s ease;
+}
+
+sidebar a.active, sidebar a:hover {
+	border-left: 5px darkgray;
+	color: #fff;
+	background: gray;
+}
+
+.sidebar a i {
+	font-size: 23px;
+	margin-right: 16px;
+}
+.sidebar a span {
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+#check:checked ~ .sidebar{
+	left: 0;
+}
+#check:checked ~ label #menuicon {
+	margin-left: 245px;
+	visibility: visible;
+}
+
 @-webkit-keyframes show {
 	from {opacity: 0%;}
 	to {opacity: 100%;}
@@ -17,21 +89,7 @@ html {
 	margin-right: 10px;
 	cursor: pointer;
 }
-#menuicon {
-	position: fixed;
-	left: 10px;
-	display: inline-block;
-	cursor: pointer;
-	margin-top: 15px;
-	margin-left: 15px;
-}
-#mi1, #mi2, #mi3 {
-  width: 25px;
-  height: 3px;
-  background-color: #333;
-  margin: 6px 0;
-  transition: 0.4s;
-}
+
 
 .change #mi1 {
   transform: translate(0, 9px) rotate(-45deg);
@@ -63,3 +121,4 @@ html {
 .hidden {
 	visibility: hidden;
 }
+
