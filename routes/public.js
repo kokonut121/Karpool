@@ -67,7 +67,7 @@ module.exports = (app, mongo) => {
 
         const newUser = new mongo.User({
             username: req.body.username,
-            email: req.body.username,
+            email: req.body.email,
             password: req.body.password,
             name: req.body.name,
             yob: req.body.yob,
