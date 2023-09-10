@@ -1,18 +1,100 @@
 <%- include("../partials/header") -%>
-
+<body>
 <div id="sign-in form">
-    <h1>Sign In to Karpool!</h1>
-
-    <form action="/login" method="post">
+    <h1 style="text-align: center; margin-bottom: 50px;">Welcome Back to Karpool</h1>
+		<div id="container">
+    <form action="/login" method="post" class="form">
         <div class="form-group">
-            <input type="text" class="form-control" id="loginEmail" placeholder="Username / Email Address" name="username">
+            <input type="text" class="form-control" id="loginEmail" placeholder="Username / Email Address" name="username" required>
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" id="loginPassword" placeholder="Password" name="password">
+            <input type="password" class="form-control" id="loginPassword" placeholder="Password" name="password" required>
         </div>
-        <div>
-            <a class="btn btn-secondary" id="cancel" href="/">Cancel</a>
-            <input class="btn btn-primary" type="submit" value="Sign In">
-        </div>
+				<div style="flex: 1;"></div>
+				<div class="btndiv">
+					<a class="btn btn-secondary" id="cancel" href="/">Cancel</a>
+					<input class="btn btn-primary" type="submit" value="Sign In" id="signinbtn">
+				</div>
     </form>
+		</div>
+
+		<style>
+			body {
+				background-image: linear-gradient(45deg, blue, white);
+			}
+			.form {
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+			}
+			#container {
+				box-sizing: border-box;
+				border: 2px solid rgba(240, 240, 240, 0.5);
+				border-radius: 15px;
+				background-color: rgba(240, 240, 240, 0.7);
+				box-shadow: 0 0 20px 40px rgba(240, 240, 240, 0.7);
+				margin: auto;
+				height: 60vh;
+				width: 40%;
+				text-align: center;
+				position: relative;
+			}
+			#loginPassword, #loginEmail {
+				padding: 15px;
+				margin: 30px auto;
+				width: 50%;
+				border-radius: 10px;
+				box-shadow: 0 0 20px 8px rgba(14, 29, 54, 0.7);
+				border: 3px;
+				transition: transform 0.5s, background-color 0.5s;
+				flex: 1;
+			}
+			#loginPassword:hover, #loginEmail:hover {
+				transform: scale(1.2);
+			}
+			#loginPassword:focus, #loginEmail:focus {
+				background-color: mediumseagreen;
+			}
+			.btndiv {
+				margin-bottom: 30px;
+			}
+			#cancel {
+				background-color: white;
+				border: none;
+				color: gray;
+				padding: 10px 15px;
+				text-align: center;
+				text-decoration: none;
+				font-size: 20px;
+				margin: 0px 2px;
+				margin-right: 20px;
+				cursor: pointer;
+				display: inline-block;
+				border-radius: 10px;
+				opacity: 50%;
+				transition: opacity 0.5s;
+			}
+			#cancel:hover {
+				opacity: 100%;
+			}
+			#signinbtn {
+				cursor: pointer;
+				background-color: white;
+				border: none;
+				color: gray;
+				padding: 10px 15px;
+				font-size: 20px;
+				margin: 0px 2px;
+				margin-left: 20px;
+				display: inline-block;
+				border-radius: 10px;
+				transition: background-color 0.5s, color 0.5s;
+			}
+			#signinbtn:hover {
+				background-color: rgba(130, 171, 237, 1);
+				color: white;
+			}
+
+    </style>
 </div>
+</body>
