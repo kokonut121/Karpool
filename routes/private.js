@@ -69,12 +69,20 @@ module.exports = (app, mongo) => {
         res.redirect('/private/homepage');
     });
 
-    app.post('/private/joinCarpool/:id', (req, res) => {
-        const carpool = mongo.db.collection('carpools').findOne({ _id: req.params.id });
-        if (carpool.vehicle.numSeats - carpool.passengers.length <= 0) {
+    app.get('/private/joinCarpool/:id', async (req, res) => {
+        const carpool = await mongo.db.collection('carpools').findOne({ _id: new mongoose.Types.ObjectId(req.params.id) });
+        if (!carpool || carpool.vehicle[0].numSeats - carpool.passengers.length <= 0) {
             res.redirect('/private/allCarpools');
         } else {
             carpool.passengers.push(req.user.name);
+            mongo.db.collection('carpools').updateOne({ _id: new mongoose.Types.ObjectId(req.params.id) }, {
+                $set: {
+                    passengers: carpool.passengers
+                }
+            });
+            console.log(carpool);
+            console.log('passenger added!');
+            res.redirect('/private/homepage');
         }
     });
 
