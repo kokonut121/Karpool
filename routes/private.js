@@ -8,7 +8,14 @@ module.exports = (app, mongo) => {
         } else {
             res.redirect('/');
         }
-    })
+    });
+
+    app.get('/logout', function(req, res, next){
+        req.logout(function(err) {
+          if (err) { return next(err); }
+          res.redirect('/');
+        });
+    });
 
     app.get('/private/homepage', async (req, res) => {
         const carpools = await mongo.db.collection('carpools').find().toArray();
