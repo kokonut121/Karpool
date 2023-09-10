@@ -72,7 +72,8 @@ module.exports = (app, mongo) => {
             name: req.body.name,
             yob: req.body.yob,
             location: req.body.location,
-            bio: req.body.bio
+            bio: req.body.bio,
+            phoneNumber: req.body.phoneNumber
         });
 
         mongo.db.collection('users').findOne({

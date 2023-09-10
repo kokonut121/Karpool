@@ -16,7 +16,8 @@ const userSchema = new mongoose.Schema({
     vehicle: [{
         type: mongoose.Schema.Types.Object,
         ref: 'Vehicle'
-    }]
+    }],
+    phoneNumber: String,
 });
 
 module.exports = { userSchema };

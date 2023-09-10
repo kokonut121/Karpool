@@ -1,3 +1,5 @@
+<%- include("../partials/header") -%>
+
 <h1>Welcome <%= user.name %>!!!</h1>
 
 <h2>My Carpools</h2>
@@ -5,9 +7,15 @@
     <% for (let carpool of carpools) { %>
         <% if (carpool.passengers.includes(user.name) || carpool.driver[0]._id.equals(user._id)) { %>
             <div id="carddiv">
+                <% if (carpool.passengers.includes(user.name)) { %>
+                    <a href="/private/cancelCarpool/<%= carpool._id %>">Cancel Your Registration</a>
+                <% } %>
+                <% if (carpool.driver[0]._id.equals(user._id)) { %>
+                    <a href="/private/deleteCarpool/<%= carpool._id %>">Delete Your Carpool</a>
+                <% } %>
                 <div>
                     <h3>Driver</h3>
-                    <p><%= carpool.driver[0].name %></p>
+                    <p><%= carpool.driver[0].name %>: <%= carpool.driver[0].phoneNumber %></p>
                 </div>
                 <div>
                     <h3>Vehicle</h3>

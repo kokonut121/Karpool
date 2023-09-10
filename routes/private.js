@@ -86,6 +86,24 @@ module.exports = (app, mongo) => {
         }
     });
 
+    app.get('/private/deleteCarpool/:id', (req, res) => {
+        mongo.db.collection('carpools').findOneAndDelete({ _id: new mongoose.Types.ObjectId(req.params.id) });
+        res.redirect('/private/homepage');
+    });
+
+    app.get('/private/cancelCarpool/:id', async (req, res) => {
+        const carpool = await mongo.db.collection('carpools').findOne({ _id: new mongoose.Types.ObjectId(req.params.id) });
+        const filtered = carpool.passengers.filter((passenger) => {
+            return passenger != req.user.name;
+        });
+        mongo.db.collection('carpools').updateOne({ _id: new mongoose.Types.ObjectId(req.params.id) }, {
+            $set: {
+                passengers: filtered
+            }
+        });
+        res.redirect('private/homepage');
+    });
+
     app.post('/private/vehicleRegistration', (req, res, next) => {
         req.body.make = req.body.make.toUpperCase();
         req.body.model = req.body.model.toUpperCase();
