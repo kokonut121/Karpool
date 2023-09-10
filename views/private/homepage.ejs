@@ -1,8 +1,10 @@
 <%- include("../partials/header") -%>
 
-<h1>Welcome <%= user.name %>!!!</h1>
-
-<h2>My Carpools</h2>
+<h1 class="maintext">Welcome <%= user.name %>!!!</h1>
+<a href="/private/allCarpools" class="linkbtn">All Carpools</a>
+<a href="/private/createCarpool" class="linkbtn">Create a Carpool</a>
+<a href="/private/registerVehicle" class="linkbtn">Register a Vehicle</a>
+<h2 class="maintext">My Carpools</h2>
 <% if (carpools.length > 0) { %>
     <% for (let carpool of carpools) { %>
         <% if (carpool.passengers.includes(user.name) || carpool.driver[0]._id.equals(user._id)) { %>
@@ -15,19 +17,16 @@
                 <% } %>
                 <div>
                     <h3>Driver</h3>
-                    <p><%= carpool.driver[0].name %>: <%= carpool.driver[0].phoneNumber %></p>
+                    <p><%= carpool.driver[0].name %></p>
                 </div>
                 <div>
-                    <h3>Vehicle</h3>
-                    <p><%= carpool.vehicle[0].color %> <%= carpool.vehicle[0].make %> <%= carpool.vehicle[0].model %></p>
+                    <span><h3>Vehicle: </h3><p><%= carpool.vehicle[0].color %> <%= carpool.vehicle[0].make %> <%= carpool.vehicle[0].model %></p></span>
                 </div>
                 <div>
-                    <h3>Route</h3>
-                    <p><%= carpool.start %> to <%= carpool.end %></p>
+                    <span><h3>Route: </h3><p><%= carpool.start %> to <%= carpool.end %></p></span>
                 </div>
                 <div>
-                    <h3>Date</h3>
-                    <p><%= carpool.date.month %>/<%= carpool.date.day %>/<%= carpool.date.year %></p>
+                    <span><h3>Date: </h3><p><%= carpool.date.month %>/<%= carpool.date.day %>/<%= carpool.date.year %></p></span>
                 </div>
                 <div>
                     <h3>Passengers</h3>
@@ -36,31 +35,49 @@
                     <% } %>
                 </div>
                 <div>
-                    <h3>Available Seats</h3>
-                    <p><%= carpool.vehicle.numSeats - carpool.passengers.length %></p>
+                    <span><h3>Available Seats: </h3><p><%= carpool.vehicle.numSeats - carpool.passengers.length %></p></span>
                 </div>
                 <div>
-                    <h3>Description</h3>
-                    <p><%= carpool.description %></p>
+                    <span><h3>Description</h3><p><%= carpool.description %></p></span>
                 </div>
                 <div>
-                    <a class="btn btn-primary btn-lg w-100 my-2" href="/private/joinCarpool/<%= carpool._id %>">Join Carpool</a>
+                    <a class="btn btn-primary btn-lg w-100 my-2" href="/private/joinCarpool/<%= carpool._id %> linkbtn" id="joincarpoolbtn">Join Carpool</a>
                 </div>
             </div>
         <% } %>
     <% } %>
 <% } %>
 <style>
-#carddiv {
-    box-sizing: border-box;
-    border: 2px solid rgba(240, 240, 240, 1.0);
-    border-radius: 15px;
-    background-color: rgba(155, 221, 172, 0.863);
-    box-shadow: 0 0 20px 40px rgba(240, 240, 240, 0.7);
-    margin: auto;
-    height: auto;
-    width: 40%;
-    text-align: center;
-    position: relative;
-}
+    .maintext {
+        text-align: center;
+    }
+    #carddiv {
+		box-sizing: border-box;
+		border: 2px solid rgba(240, 240, 240, 1.0);
+		border-radius: 15px;
+		background-color: rgba(155, 221, 172, 0.863);
+		box-shadow: 0 0 20px 40px rgba(240, 240, 240, 0.7);
+		margin: auto;
+		height: auto;
+		width: 40%;
+		text-align: center;
+		position: relative;
+	}
+    .linkbtn {
+		cursor: pointer;
+		background-color: white;
+        border: none;
+        color: gray;
+        padding: 10px 15px;
+        font-size: 20px;
+        margin: 0px 2px;
+        margin-left: 20px;
+        display: inline-block;
+        border-radius: 10px;
+        transition: background-color 0.5s, color 0.5s;
+    }
+    .linkbtn {
+        background-color: rgba(130, 171, 237, 1);
+        color: white;
+    }
 </style>

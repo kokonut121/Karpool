@@ -1,6 +1,6 @@
 <%- include("../partials/header") -%>
 
-<h1>Carpools to <%= destination %> from your location</h1>
+<h1 class="maintext">Carpools to <%= destination %> from your location</h1>
 
 <% if (carpools.length > 0) { %>
     <% for (let carpool of carpools) { %>
@@ -36,22 +36,42 @@
                     <p><%= carpool.description %></p>
                 </div>
                 <div>
-                    <a class="btn btn-primary btn-lg w-100 my-2" href="/private/joinCarpool/<%= carpool._id %>">Join Carpool</a>
+                    <a class="btn btn-primary btn-lg w-100 my-2" href="/private/joinCarpool/<%= carpool._id %>" id="joincarpoolbtn">Join Carpool</a>
                 </div>
             </div>
     <% } %>
 <% } %>
 <style>
-    #carddiv {
-        box-sizing: border-box;
-        border: 2px solid rgba(240, 240, 240, 1.0);
-        border-radius: 15px;
-        background-color: rgba(155, 221, 172, 0.863);
-        box-shadow: 0 0 20px 40px rgba(240, 240, 240, 0.7);
-        margin: auto;
-        height: auto;
-        width: 40%;
+    .maintext {
         text-align: center;
-        position: relative;
+    }
+    #carddiv {
+		box-sizing: border-box;
+		border: 2px solid rgba(240, 240, 240, 1.0);
+		border-radius: 15px;
+		background-color: rgba(155, 221, 172, 0.863);
+		box-shadow: 0 0 20px 40px rgba(240, 240, 240, 0.7);
+		margin: auto;
+		height: auto;
+		width: 40%;
+		text-align: center;
+		position: relative;
+	}
+    #joincarpoolbtn {
+		cursor: pointer;
+		background-color: white;
+        border: none;
+        color: gray;
+        padding: 10px 15px;
+        font-size: 20px;
+        margin: 0px 2px;
+        margin-left: 20px;
+        display: inline-block;
+        border-radius: 10px;
+        transition: background-color 0.5s, color 0.5s;
+    }
+    #joincarpoolbtn:hover {
+        background-color: rgba(130, 171, 237, 1);
+        color: white;
     }
 </style>

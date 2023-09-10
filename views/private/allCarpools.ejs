@@ -1,8 +1,8 @@
 <%- include("../partials/header") -%>
 
-<h1>All Carpools</h1>
+<h1 class="maintext">All Carpools</h1>
 
-<div>
+<div class="maintext">
     <h3>Filter by Destination</h3>
     <% locations.forEach((location) => { %>
         <a class="btn btn-primary btn-lg w-100 my-2" href="/private/findCarpool/<%= location %>"><%= location %></a>
@@ -43,14 +43,16 @@
                         <p><%= carpool.description %></p>
                     </div>
                     <div>
-                        <% console.log(carpool._id) %>
-                        <a class="btn btn-primary btn-lg w-100 my-2" href="/private/joinCarpool/<%= carpool._id %>">Join Carpool</a>
+                        <a class="btn btn-primary btn-lg w-100 my-2" href="/private/joinCarpool/<%= carpool._id %>" id="joincarpoolbtn">Join Carpool</a>
                     </div>
                 </div>
         <% } %>
     <% } %>
 </div>
 <style>
+    .maintext {
+        text-align: center;
+    }
     #carddiv {
 		box-sizing: border-box;
 		border: 2px solid rgba(240, 240, 240, 1.0);
@@ -63,4 +65,21 @@
 		text-align: center;
 		position: relative;
 	}
+    #joincarpoolbtn {
+		cursor: pointer;
+		background-color: white;
+        border: none;
+        color: gray;
+        padding: 10px 15px;
+        font-size: 20px;
+        margin: 0px 2px;
+        margin-left: 20px;
+        display: inline-block;
+        border-radius: 10px;
+        transition: background-color 0.5s, color 0.5s;
+    }
+    #joincarpoolbtn:hover {
+        background-color: rgba(130, 171, 237, 1);
+        color: white;
+    }
 </style>
