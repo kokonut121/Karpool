@@ -11,7 +11,7 @@ module.exports = (app, mongo) => {
     })
 
     app.get('/private/homepage', async (req, res) => {
-        const carpools = mongo.db.collection('carpools').find().toArray();
+        const carpools = await mongo.db.collection('carpools').find().toArray();
         res.render('../views/private/homepage.ejs', {
             user: req.user,
             carpools: carpools
@@ -22,19 +22,19 @@ module.exports = (app, mongo) => {
         res.render('../views/private/registerVehicle.ejs');
     });
 
-    app.get('/private/findCarpool/:destination', (req, res) => {
-        const carpools = mongo.db.collection('carpools').find({ $and: [{ end: req.params.destination }, { start: req.user.location }] }).toArray();
+    app.get('/private/findCarpool/:destination', async (req, res) => {
+        const carpools = await mongo.db.collection('carpools').find({ $and: [{ end: req.params.destination }, { start: req.user.location }] }).toArray();
         res.render('../views/private/findCarpool.ejs', {
             destination: req.params.destination,
             carpools: carpools
         })
     });
 
-    app.get('/private/allCarpools', (req, res) => {
-        const carpools = mongo.db.collection('carpools').find().toArray();
+    app.get('/private/allCarpools', async (req, res) => {
+        const carpools = await mongo.db.collection('carpools').find().toArray();
         res.render('../views/private/allCarpools.ejs', {
             carpools: carpools,
-            locations: locations
+            locations: locations,
         })
     });
 
