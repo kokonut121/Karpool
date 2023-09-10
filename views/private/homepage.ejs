@@ -32,7 +32,7 @@
         <h3>Bio</h3>
         <p><%= user.bio %></p>
     </div>
-    <% if (user.vehicle) { %>
+    <% if (user.vehicle[0]) { %>
         <div>
             <span><h3>Vehicle: </h3><p><%= user.vehicle[0].color %> <%= user.vehicle[0].make %> <%= user.vehicle[0].model %></p></span>
         </div>
