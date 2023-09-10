@@ -36,7 +36,7 @@
 	<button id = "genbutton1" class="genbutton hidden" onclick="goTo('/signup')">Sign Up</button>
 	<button id = "genbutton2" class="genbutton hidden" onclick="goTo('/signin')">Log In</button>
   <div id="logodiv" class = "header">
-    <img id="logo" src="karpool.png" onclick = "goTo('/')">
+    <img id="logo" src="./karpool.png" onclick = "goTo('/')">
   </div>
 	</header>
   <script>
@@ -85,23 +85,22 @@
 		</div>
 		<style>
 			#cancel {
+				text-decoration: none;
+				cursor: pointer;
 				background-color: white;
 				border: none;
 				color: gray;
 				padding: 10px 15px;
-				text-align: center;
-				text-decoration: none;
 				font-size: 20px;
 				margin: 0px 2px;
-				margin-right: 20px;
-				cursor: pointer;
+				margin-left: 20px;
 				display: inline-block;
 				border-radius: 10px;
-				opacity: 50%;
-				transition: opacity 0.5s;
+				transition: background-color 0.5s, color 0.5s;
 			}
 			#cancel:hover {
-				opacity: 100%;
+				background-color: rgba(130, 171, 237, 1);
+				color: white;
 			}
 			#signinbtn {
 				text-decoration: none;
