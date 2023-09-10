@@ -30,30 +30,19 @@ app.use(flash());
 require("./routes/public.js")(app, mongo);
 require("./routes/private.js")(app, mongo);
 
-// WILDCARD FOR ALL OTHER ROUTES
 app.get('*', (req, res) => {
-  /*req.flash(
-    'errorFlash',
-    "Error 404: File Not Found. That page doesn't exist."
-  );*/
   res.redirect('/');
 });
 
-// GLOBAL ERROR HANDLER
 app.use((err, req, res, next) => {
   if (res.headersSent) {
     console.log('yes');
     return next(err);
   }
   console.error(err.stack);
-  /*req.flash(
-    'errorFlash',
-    'Error 500: Internal Server Error. Something broke on our end, sorry about that.'
-  );*/
   res.redirect('/');
 });
 
-// START http AND https SERVERS
 http.createServer(app).listen(PORT, function () {
   console.log('Express server listening on port ' + PORT);
 });
