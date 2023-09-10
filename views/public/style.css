@@ -154,3 +154,17 @@ sidebar a.active, sidebar a:hover {
 	background-color: rgba(130, 171, 237, 1);
 	color: white;
 }
+.smaintitle {
+	font-size: 100px;
+	color: mediumturquoise;
+	text-align: center;
+	padding: 20vh 0;
+}
+.secondpage {
+	height: 100%;
+	background-color: linear-gradient(-45deg, mediumturquoise, darkslategray);
+}
+.thirdpage {
+	background-color: linear-gradient(45deg, mediumturquoise, darkslategray);
+	height: 100%;
+}
