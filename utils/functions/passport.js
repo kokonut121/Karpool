@@ -1,6 +1,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const mongo = require('./mongo.js');
+const bodyParser = require('body-parser');
 
 module.exports = (app, mongo) => {
     passport.use(
@@ -33,6 +34,7 @@ module.exports = (app, mongo) => {
         });
     });
 
+    app.use(bodyParser.urlencoded({ extended: true }));
     app.use(passport.initialize());
     app.use(passport.session());
 };

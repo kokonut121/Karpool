@@ -5,6 +5,7 @@ const https = require('https');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
+const bodyParser = require('body-parser');
 
 // START EXPRESS SERVER
 const app = express();
