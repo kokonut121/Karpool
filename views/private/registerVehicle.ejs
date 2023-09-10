@@ -1,8 +1,9 @@
 <%- include("../partials/header") -%>
 
-<h1>Register Your Vehicle!</h1>
+<h1 style="text-align: center; margin-bottom: 50px;">Register Your Vehicle!</h1>
 
 <div>
+    <div id="container">
     <form action="/private/vehicleRegistration" method="post">
         <div>
             <input type="text" name="make" id="make" placeholder="Make">
@@ -20,9 +21,88 @@
             <input type="number" name="numSeats" id="numSeats" placeholder="Number of Seats">
         </div>
 
-        <div class="mt-4 ms-1">
+        <div class="btndiv">
             <a class="btn btn-secondary" id="cancel" href="/">Cancel</a>
             <input class="btn btn-primary" type="submit" id="submitButton" value="Sign Up">
         </div>
     </form>
+    </div>
 </div>
+<style>
+    body {
+        background-image: linear-gradient(45deg, blue, white);
+    }
+    .form {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    #container {
+        box-sizing: border-box;
+        border: 2px solid rgba(240, 240, 240, 0.5);
+        border-radius: 15px;
+        background-color: rgba(240, 240, 240, 0.7);
+        box-shadow: 0 0 20px 40px rgba(240, 240, 240, 0.7);
+        margin: auto;
+        height: 60vh;
+        width: 40%;
+        text-align: center;
+        position: relative;
+    }
+    form div input {
+        padding: 15px;
+        margin: 30px auto;
+        width: 50%;
+        border-radius: 10px;
+        box-shadow: 0 0 20px 8px rgba(14, 29, 54, 0.7);
+        border: 3px;
+        transition: transform 0.5s, background-color 0.5s;
+        flex: 1;
+    }
+    form div input:hover{
+	    transform: scale(1.2);
+    }
+    form div input:focus {
+	    background-color: mediumseagreen;
+    }
+    .btndiv {
+        margin-bottom: 30px;
+    }
+    #cancel {
+        background-color: white;
+        border: none;
+        color: gray;
+        padding: 10px 15px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 20px;
+        margin: 0px 2px;
+        margin-right: 20px;
+        cursor: pointer;
+        display: inline-block;
+        border-radius: 10px;
+        opacity: 50%;
+        transition: opacity 0.5s;
+    }
+    #cancel:hover {
+        opacity: 100%;
+    }
+    #submitButton {
+        cursor: pointer;
+        background-color: white;
+        border: none;
+        color: gray;
+        padding: 10px 15px;
+        font-size: 20px;
+        margin: 0px 2px;
+        margin-left: 20px;
+        display: inline-block;
+        border-radius: 10px;
+        transition: background-color 0.5s, color 0.5s;
+    }
+    #submitButton:hover {
+        background-color: rgba(130, 171, 237, 1);
+        color: white;
+    }
+
+</style>
