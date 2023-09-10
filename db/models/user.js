@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     location: String,
     bio: String,
     vehicle: [{
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.Object,
         ref: 'Vehicle'
     }]
 });

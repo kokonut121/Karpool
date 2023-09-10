@@ -7,7 +7,7 @@ const vehicleSchema = new mongoose.Schema({
     lpNum: String,
     numSeats: Number,
     owner: [{
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.Object,
         ref: 'User'
     }],
 });

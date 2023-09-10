@@ -1,0 +1,43 @@
+<%- include("../partials/header") -%>
+
+<h1>Create Your Carpool</h1>
+
+<div>
+    <form action="/private/create" method="post">
+        <div>
+            <h3>Where are you starting from?</h3>
+            <% locations.forEach((location) => { %>
+                <div>
+                    <input type="radio" name="start" id="<%= location %>" value="<%= location %>">
+                    <label class="form-check-label" for="<%= location %>"><%= location %></label>
+                </div>
+            <% }); %>
+        </div>
+        <div>
+            <h3>What is your destination?</h3>
+            <% locations.forEach((location) => { %>
+                <div>
+                    <input type="radio" name="end" id="<%= location %>" value="<%= location %>">
+                    <label class="form-check-label" for="<%= location %>"><%= location %></label>
+                </div>
+            <% }); %>
+        </div>
+        <div>
+            <input type="number" name="day" id="day" placeholder="Day">
+        </div>
+        <div>
+            <input type="number" name="month" id="month" placeholder="Month">
+        </div>
+        <div>
+            <input type="number" name="year" id="year" placeholder="Year">
+        </div>
+        <div>
+            <input type="text" name="description" id="description" placeholder="Description">
+        </div>
+
+        <div class="mt-4 ms-1">
+            <a class="btn btn-secondary" id="cancel" href="/">Cancel</a>
+            <input class="btn btn-primary" type="submit" id="submitButton" value="Submit">
+        </div>
+    </form>
+</div>

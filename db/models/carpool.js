@@ -2,14 +2,17 @@ const mongoose = require('mongoose');
 
 const carpoolSchema = new mongoose.Schema({
     driver: [{
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.Object,
         ref: 'User'
     }],
     vehicle: [{
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.Object,
         ref: 'Vehicle'
     }],
-    passengers: Array,
+    passengers: {
+        type: Array,
+        default: []
+    },
     date: {
         day: Number,
         month: Number,

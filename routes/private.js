@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const locations = ['Seattle', 'Tacoma', 'Bellevue', 'Kent', 'Everett'];
 
 module.exports = (app, mongo) => {
     app.all(/^(\/private).*$/, (req, res, next) => {
@@ -10,13 +11,71 @@ module.exports = (app, mongo) => {
     })
 
     app.get('/private/homepage', async (req, res) => {
+        const carpools = mongo.db.collection('carpools').find().toArray();
         res.render('../views/private/homepage.ejs', {
-            user: req.user
+            user: req.user,
+            carpools: carpools
         });
     });
 
     app.get('/private/registerVehicle', (req, res) => {
         res.render('../views/private/registerVehicle.ejs');
+    });
+
+    app.get('/private/findCarpool/:destination', (req, res) => {
+        const carpools = mongo.db.collection('carpools').find({ $and: [{ end: req.params.destination }, { start: req.user.location }] }).toArray();
+        res.render('../views/private/findCarpool.ejs', {
+            destination: req.params.destination,
+            carpools: carpools
+        })
+    });
+
+    app.get('/private/allCarpools', (req, res) => {
+        const carpools = mongo.db.collection('carpools').find().toArray();
+        res.render('../views/private/allCarpools.ejs', {
+            carpools: carpools,
+            locations: locations
+        })
+    });
+
+    app.get('/private/createCarpool', (req, res) => {
+        res.render('../views/private/createCarpool.ejs', {
+            locations: locations
+        });
+    });
+
+    app.post('/private/create', (req, res) => {
+        if (!req.user.vehicle) {
+            res.redirect('/private/homepage');
+            return;
+        }
+
+        const newCarpool = new mongo.Carpool({
+            start: req.body.start,
+            end: req.body.end,
+            date: {
+                day: req.body.day,
+                month: req.body.month,
+                year: req.body.year
+            },
+            description: req.body.description,
+            driver: req.user,
+            vehicle: req.user.vehicle
+        });
+
+        newCarpool.save().then((carpool) => {
+            console.log(carpool);
+        });
+        res.redirect('/private/homepage');
+    });
+
+    app.post('/private/joinCarpool/:id', (req, res) => {
+        const carpool = mongo.db.collection('carpools').findOne({ _id: req.params.id });
+        if (carpool.vehicle.numSeats - carpool.passengers.length <= 0) {
+            res.redirect('/private/allCarpools');
+        } else {
+            carpool.passengers.push(req.user.name);
+        }
     });
 
     app.post('/private/vehicleRegistration', (req, res, next) => {
