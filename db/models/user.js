@@ -5,11 +5,13 @@ const userSchema = new mongoose.Schema({
     username: String,
     email: String,
     yob: Number,
-    credit: Number,
+    credit: {
+        type: Number,
+        default: 3
+    },
     password: String,
     pfp: Object,
-    city: String,
-    state: String,
+    location: String,
     bio: String,
     vehicle: [{
         type: mongoose.Schema.Types.ObjectId,

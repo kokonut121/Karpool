@@ -1,1 +1,43 @@
 <%- include("../partials/header") -%>
+
+<h1>Sign up for Karpool!</h1>
+
+<div>
+    <form action="/register" method="post">
+        <div>
+            <input type="text" name="username" id="username" placeholder="Username">
+        </div>
+        <div>
+            <input type="text" name="email" id="email" placeholder="Email Address">
+        </div>
+        <div>
+            <input type="password" name="password" id="password" placeholder="Password">
+        </div>
+        <div>
+            <input type="password" name="passwordConfirmation" id="passwordConfirmation" placeholder="Confirm Password">
+        </div>
+        <div>
+            <input type="number" name="yob" id="yob" placeholder="Year of Birth">
+        </div>
+        <div>
+            <input type="text" name="name" id="name" placeholder="Name">
+        </div>
+        <div>
+            <h3>Where are you located?</h3>
+            <% locations.forEach((location) => { %>
+                <div>
+                    <input type="radio" name="location" id="<%= location %>" value="<%= location %>">
+                    <label class="form-check-label" for="<%= location %>"><%= location %></label>
+                </div>
+            <% }); %>
+        </div>
+        <div>
+            <input type="text" name="bio" id="bio" placeholder="Write some fun facts about yourself!">
+        </div>
+
+        <div class="mt-4 ms-1">
+            <a class="btn btn-secondary" id="cancel" href="/">Cancel</a>
+            <input class="btn btn-primary" type="submit" id="submitButton" value="Sign Up">
+        </div>
+    </form>
+</div>

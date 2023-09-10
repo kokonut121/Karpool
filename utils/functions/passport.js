@@ -20,5 +20,19 @@ module.exports = (app, mongo) => {
                     })
             }
         )
-    )
-}
+    );
+    passport.serializeUser(function (user, cb) {
+        cb(null, user);
+    });
+    passport.deserializeUser(function (id, cb) {
+        mongo.User.findById(id, function (err, user) {
+            if (err) {
+                return cb(err);
+            }
+            cb(null, user);
+        });
+    });
+
+    app.use(passport.initialize());
+    app.use(passport.session());
+};
