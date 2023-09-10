@@ -13,33 +13,33 @@
         <% for (let carpool of carpools) { %>
                 <div id="carddiv">
                     <div>
-                        <h3>Driver:</h3>
+                        <h3>Driver</h3>
                         <p><%= carpool.driver[0].name %>: <%= carpool.driver[0].phoneNumber %></p>
                     </div>
                     <div>
-                        <h3>Vehicle:</h3>
+                        <h3>Vehicle</h3>
                         <p><%= carpool.vehicle[0].color %> <%= carpool.vehicle[0].make %> <%= carpool.vehicle[0].model %></p>
                     </div>
                     <div>
-                        <h3>Route:</h3>
+                        <h3>Route</h3>
                         <p><%= carpool.start %> to <%= carpool.end %></p>
                     </div>
                     <div>
-                        <h3>Date:</h3>
+                        <h3>Date</h3>
                         <p><%= carpool.date.month %>/<%= carpool.date.day %>/<%= carpool.date.year %></p>
                     </div>
                     <div>
-                        <h3>Passengers:</h3>
+                        <h3>Passengers</h3>
                         <% for (let passenger of carpool.passengers) { %>
                             <p><%= passenger %></p>
                         <% } %>
                     </div>
                     <div>
-                        <h3>Available Seats:</h3>
+                        <h3>Available Seats</h3>
                         <p><%= carpool.vehicle.numSeats - carpool.passengers.length %></p>
                     </div>
                     <div>
-                        <h3>Description:</h3>
+                        <h3>Description</h3>
                         <p><%= carpool.description %></p>
                     </div>
                     <div>
